@@ -6,10 +6,15 @@ import {useState} from "react";
 import {IPlayer} from "utils/generetePlayers";
 
 const MainPage = () => {
-    const [selectedPlayer, setSelectedPlayer] = useState(null);
 
-    const handleInfoClick = (player: number) => {
-        setSelectedPlayer(player);
+    const [showSelectedPlayer, setShowSelectedPlayer] = useState(null);
+
+    const handleInfoClick = (index: number) => {
+        if (showSelectedPlayer === index) {
+            setShowSelectedPlayer(null); // Закрывает SelectedPlayer при повторном клике
+        } else {
+            setShowSelectedPlayer(index); // Открывает SelectedPlayer
+        }
     };
     return (
         <main className={classes.container}>
@@ -22,7 +27,7 @@ const MainPage = () => {
             </div>
 
             <div className={classes.teamsContainer}>
-                <WinTeam selectedPlayer={selectedPlayer} handleInfoClick={handleInfoClick} setSelectedPlayer={setSelectedPlayer}/>
+                <WinTeam selectedPlayer={showSelectedPlayer} handleInfoClick={handleInfoClick} setSelectedPlayer={setShowSelectedPlayer}/>
                 <LoseTeam handleInfoClick={handleInfoClick}/>
                 {/*<SelectedPlayer selectedPlayer={selectedPlayer} setSelectedPlayer={setSelectedPlayer} />*/}
             </div>

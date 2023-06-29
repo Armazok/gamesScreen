@@ -3,6 +3,7 @@ import classes from "pages/MainPage/ui/MainPage.module.scss";
 import Info from "assets/icon/information.svg";
 import {generateRandomPlayers, IPlayer} from "utils/generetePlayers";
 import {SelectedPlayer} from "pages/MainPage/ui/selectedPlayer/SelecetedPlayer";
+import {createPortal} from "react-dom";
 
 interface IWinTeam {
     selectedPlayer: any
@@ -21,39 +22,43 @@ export const WinTeam: FC<IWinTeam> = memo(({handleInfoClick, setSelectedPlayer, 
 
 
     return (
-            <div className={`${classes.teamContainer} ${classes.customScroll}`}>
-                <table className={classes.teamTable}>
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Score</th>
-                        <th>Information</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {winningTeam
-                        .sort((a, b) => b.score - a.score)
-                        .map((player, index) => (
-                            <tr key={index}>
-                                <td className={player.state === 'dead' ? classes.dead : ''}>{player.nickname}</td>
-                                <td>{player.score}</td>
-                                <td>
-                                    <div className={classes.modalWrap}>
-                                        <button onClick={() => handleInfoClick(index)}>
-                                            <Info/>
-                                        </button>
-                                            {selectedPlayer === index && (
-                                                <SelectedPlayer
-                                                    selectedPlayer={selectedPlayer}
-                                                    setSelectedPlayer={setSelectedPlayer}
-                                                />
-                                            )}
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+        <div className={`${classes.teamContainer} ${classes.customScroll}`}>
+            <table className={classes.teamTable}>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Information</th>
+                </tr>
+                </thead>
+                <tbody>
+                {winningTeam
+                    .sort((a, b) => b.score - a.score)
+                    .map((player, index) => (
+                        <tr key={index}>
+                            <td className={player.state === 'dead' ? classes.dead : ''}>{player.nickname}</td>
+                            <td>{player.score}</td>
+                            <td>
+                                <div>
+                                    <button onClick={() => handleInfoClick(index)}>
+                                        <Info/>
+                                    </button>
+                                    {selectedPlayer === index && (
+                                        <>
+                                            <button onClick={() => setSelectedPlayer(null)}>Close</button>
+                                            <SelectedPlayer
+                                                selectedPlayer={selectedPlayer}
+                                                setSelectedPlayer={setSelectedPlayer}
+                                            />
+                                        </>
+                                    )}
+                                </div>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
     );
+
 });
