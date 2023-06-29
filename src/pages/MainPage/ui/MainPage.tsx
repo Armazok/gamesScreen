@@ -2,14 +2,13 @@ import classes from './MainPage.module.scss';
 import Win from '../../../assets/icon/win.svg';
 import {WinTeam} from "pages/MainPage/ui/winTeam/WinTeam";
 import {LoseTeam} from "pages/MainPage/ui/loseTeam/LoseTeam";
-import {SelectedPlayer} from "pages/MainPage/ui/selectedPlayer/SelecetedPlayer";
-import {IPlayer} from "utils/generetePlayers";
 import {useState} from "react";
+import {IPlayer} from "utils/generetePlayers";
 
 const MainPage = () => {
     const [selectedPlayer, setSelectedPlayer] = useState(null);
 
-    const handleInfoClick = (player: IPlayer) => {
+    const handleInfoClick = (player: number) => {
         setSelectedPlayer(player);
     };
     return (
@@ -23,9 +22,9 @@ const MainPage = () => {
             </div>
 
             <div className={classes.teamsContainer}>
-                <WinTeam handleInfoClick={handleInfoClick}/>
+                <WinTeam selectedPlayer={selectedPlayer} handleInfoClick={handleInfoClick} setSelectedPlayer={setSelectedPlayer}/>
                 <LoseTeam handleInfoClick={handleInfoClick}/>
-                <SelectedPlayer selectedPlayer={selectedPlayer} setSelectedPlayer={setSelectedPlayer} />
+                {/*<SelectedPlayer selectedPlayer={selectedPlayer} setSelectedPlayer={setSelectedPlayer} />*/}
             </div>
         </main>
     );

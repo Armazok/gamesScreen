@@ -4,7 +4,7 @@ import Info from "assets/icon/information.svg";
 import {generateRandomPlayers, IPlayer} from "utils/generetePlayers";
 
 interface ILoseTeam {
-    handleInfoClick: (player: IPlayer) =>void
+    handleInfoClick: (player: number) =>void
 }
 
 export const LoseTeam: FC<ILoseTeam> = memo(({handleInfoClick}) => {
@@ -33,7 +33,7 @@ export const LoseTeam: FC<ILoseTeam> = memo(({handleInfoClick}) => {
                                 <td className={player.state === 'dead' ? classes.dead : ''}>{player.nickname}</td>
                                 <td>{player.score}</td>
                                 <td>
-                                    <button className={classes.infoButton} onClick={() => handleInfoClick(player)}>
+                                    <button className={classes.infoButton} onClick={() => handleInfoClick(index)}>
                                         <Info />
                                     </button>
                                 </td>

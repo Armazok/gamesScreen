@@ -97,7 +97,7 @@ button {
 
 
 .modal {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -135,6 +135,11 @@ button {
 
 .modal button:hover {
   background-color: #45a049;
+}
+
+
+.modalWrap {
+  position: relative;
 }
 
 
