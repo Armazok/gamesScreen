@@ -1,28 +1,27 @@
-import React, {Dispatch, FC, memo} from 'react';
+import {FC, memo} from 'react';
 import classes from "pages/MainPage/ui/MainPage.module.scss";
-import {createPortal} from "react-dom";
+import {IPlayer} from "utils/generetePlayers";
 
 interface ISelectedPlayer {
-    selectedPlayer: any
-    setSelectedPlayer: Dispatch<any>
+    selectedPlayer: IPlayer
+    setSelectedPlayer: () => void
 }
 
 export const SelectedPlayer: FC<ISelectedPlayer> = memo(({selectedPlayer, setSelectedPlayer}) => {
+
     return (
         <>
-            {selectedPlayer && createPortal(
-                (
-                    <div className={classes.modal}>
-                        <div className={classes.modalContent}>
-                            <h2>Player Info</h2>
-                            <p>Kills: {selectedPlayer.kills}</p>
-                            <p>Deaths: {selectedPlayer.deaths}</p>
-                            <button>Add Friend</button>
-                            <button onClick={() => setSelectedPlayer(null)}>Close</button>
-                        </div>
+            {selectedPlayer && (
+                <div className={classes.modal}>
+                    <div className={classes.modalContent}>
+                        <h2>Player Info</h2>
+                        <p>Name: {selectedPlayer.nickname}</p>
+                        <p>Kills: {selectedPlayer.kills}</p>
+                        <p>Deaths: {selectedPlayer.deaths}</p>
+                        <button>Add Friend</button>
+                        <button onClick={setSelectedPlayer}>Close</button>
                     </div>
-                ),
-                document.getElementById('portal')
+                </div>
             )}
         </>
     );

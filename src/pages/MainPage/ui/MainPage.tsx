@@ -3,19 +3,19 @@ import Win from '../../../assets/icon/win.svg';
 import {WinTeam} from "pages/MainPage/ui/winTeam/WinTeam";
 import {LoseTeam} from "pages/MainPage/ui/loseTeam/LoseTeam";
 import {useState} from "react";
-import {IPlayer} from "utils/generetePlayers";
 
 const MainPage = () => {
 
     const [showSelectedPlayer, setShowSelectedPlayer] = useState(null);
 
-    const handleInfoClick = (index: number) => {
-        if (showSelectedPlayer === index) {
-            setShowSelectedPlayer(null); // Закрывает SelectedPlayer при повторном клике
+    const handleInfoClick = (idPlayer: number) => {
+        if (showSelectedPlayer === idPlayer) {
+            setShowSelectedPlayer(null);
         } else {
-            setShowSelectedPlayer(index); // Открывает SelectedPlayer
+            setShowSelectedPlayer(idPlayer);
         }
     };
+
     return (
         <main className={classes.container}>
             <div className={classes.gameResults}>Game Results</div>
@@ -27,9 +27,8 @@ const MainPage = () => {
             </div>
 
             <div className={classes.teamsContainer}>
-                <WinTeam selectedPlayer={showSelectedPlayer} handleInfoClick={handleInfoClick} setSelectedPlayer={setShowSelectedPlayer}/>
-                <LoseTeam handleInfoClick={handleInfoClick}/>
-                {/*<SelectedPlayer selectedPlayer={selectedPlayer} setSelectedPlayer={setSelectedPlayer} />*/}
+                <WinTeam  selectedPlayer={showSelectedPlayer}  setSelectedPlayer={setShowSelectedPlayer} handleInfoClick={handleInfoClick}/>
+                <LoseTeam selectedPlayer={showSelectedPlayer} setSelectedPlayer={setShowSelectedPlayer} handleInfoClick={handleInfoClick}/>
             </div>
         </main>
     );

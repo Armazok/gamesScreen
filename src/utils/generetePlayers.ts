@@ -1,5 +1,7 @@
+import { v4 as uuidv4 } from 'uuid';
 
 export interface IPlayer {
+    id: string
     kills: number;
     score: number;
     nickname: string;
@@ -15,8 +17,11 @@ export function generateRandomPlayers() {
         const state = Math.random() < 0.5 ? 'alive' : 'dead';
         const kills = Math.floor(Math.random() * 10);
         const deaths = Math.floor(Math.random() * 10);
+        const id = uuidv4();
+
 
         const player = {
+            id,
             nickname,
             score,
             state,

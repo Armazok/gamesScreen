@@ -1,23 +1,21 @@
-import React, {Dispatch, FC, memo, useEffect, useState} from 'react';
+import {Dispatch, FC, memo, useEffect, useState} from 'react';
 import classes from "pages/MainPage/ui/MainPage.module.scss";
 import Info from "assets/icon/information.svg";
 import {generateRandomPlayers, IPlayer} from "utils/generetePlayers";
 import {SelectedPlayer} from "pages/MainPage/ui/selectedPlayer/SelecetedPlayer";
-import {createPortal} from "react-dom";
 
 interface IWinTeam {
+    handleInfoClick: (index: number) => void
     selectedPlayer: any
-    handleInfoClick: (indexPlayer: number) => void
     setSelectedPlayer: Dispatch<any>
 }
 
-export const WinTeam: FC<IWinTeam> = memo(({handleInfoClick, setSelectedPlayer, selectedPlayer}) => {
+export const WinTeam: FC<IWinTeam> = memo(({setSelectedPlayer, selectedPlayer}) => {
     const [winningTeam, setWinningTeam] = useState<IPlayer[]>([]);
 
     useEffect(() => {
         setWinningTeam(generateRandomPlayers());
     }, []);
-
 
 
 
@@ -34,23 +32,20 @@ export const WinTeam: FC<IWinTeam> = memo(({handleInfoClick, setSelectedPlayer, 
                 <tbody>
                 {winningTeam
                     .sort((a, b) => b.score - a.score)
-                    .map((player, index) => (
-                        <tr key={index}>
+                    .map((player) => (
+                        <tr key={player.id}>
                             <td className={player.state === 'dead' ? classes.dead : ''}>{player.nickname}</td>
                             <td>{player.score}</td>
                             <td>
                                 <div>
-                                    <button onClick={() => handleInfoClick(index)}>
+                                    <button onClick={() => setSelectedPlayer(player.id)}>
                                         <Info/>
                                     </button>
-                                    {selectedPlayer === index && (
-                                        <>
-                                            <button onClick={() => setSelectedPlayer(null)}>Close</button>
-                                            <SelectedPlayer
-                                                selectedPlayer={selectedPlayer}
-                                                setSelectedPlayer={setSelectedPlayer}
-                                            />
-                                        </>
+                                    {selectedPlayer === player.id && (
+                                        <SelectedPlayer
+                                            selectedPlayer={player}
+                                            setSelectedPlayer={() => setSelectedPlayer(null)}
+                                        />
                                     )}
                                 </div>
                             </td>
