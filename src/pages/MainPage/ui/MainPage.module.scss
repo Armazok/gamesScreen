@@ -1,0 +1,163 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  //background-image: url('https://panzar.ru/_media2.axd/1982.jpg');
+  background-image: url('https://images.wallpapershq.com/wallpapers/519/wallpaper_519_1920x1080.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.gameResults {
+  color: chartreuse;
+  margin-bottom: 20px;
+  font-size: 40px;
+}
+
+.teamsContainer {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 40px;
+  gap: 50px;
+  width: 90%;
+}
+
+.teamContainer {
+  flex: 1;
+  max-height: 500px;
+  overflow: auto;
+}
+
+.infoStatus {
+  display: flex;
+
+}
+
+.winningTeam {
+  display: flex;
+  flex-direction: column;
+}
+
+.winIcon {
+  margin-left: 10px;
+  background-color: red;
+  border-radius: 100px;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+thead th {
+  font-weight: bold;
+  text-align: left;
+  padding: 8px;
+  border-bottom: 2px solid #000;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+td.dead {
+  text-decoration: line-through;
+  color: red;
+}
+
+.teamTable {
+  width: 100%;
+  border-collapse: separate;
+  text-align-last: center;
+  border-spacing: 0;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.teamLabel {
+  font-weight: bold;
+  text-align: center;
+  padding: 8px;
+  background-color: #f0f0f0;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.modalContent {
+  text-align: center;
+}
+
+.modal h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: red;
+}
+
+.modal p {
+  margin-bottom: 5px;
+  color: red;
+}
+
+.modal button {
+  margin-top: 20px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.modal button:hover {
+  background-color: #45a049;
+}
+
+
+
+.customScroll {
+  overflow-y: scroll;
+}
+
+.customScroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.customScroll::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.customScroll::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.customScroll::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+
