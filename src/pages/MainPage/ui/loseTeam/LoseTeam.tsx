@@ -1,24 +1,18 @@
-import {Dispatch, FC, memo, useEffect, useState} from 'react';
+import {Dispatch, FC, memo} from 'react';
 import classes from "pages/MainPage/ui/MainPage.module.scss";
 import Info from "assets/icon/information.svg";
-import {generateRandomPlayers, IPlayer} from "utils/generetePlayers";
+import {IPlayer} from "utils/generetePlayers";
 import {SelectedPlayer} from "pages/MainPage/ui/selectedPlayer/SelecetedPlayer";
 
 interface ILoseTeam {
     handleInfoClick: (index: number) => void
     selectedPlayer: any
     setSelectedPlayer: Dispatch<any>
+    losingTeam: IPlayer[]
+    setLosingTeam: (player: IPlayer[]) => void
 }
 
-export const LoseTeam: FC<ILoseTeam> = memo(({setSelectedPlayer, selectedPlayer}) => {
-    const [losingTeam, setLosingTeam] = useState<IPlayer[]>([]);
-
-    useEffect(() => {
-        setLosingTeam(generateRandomPlayers());
-    }, []);
-
-
-
+export const LoseTeam: FC<ILoseTeam> = memo(({setSelectedPlayer, selectedPlayer, losingTeam, setLosingTeam}) => {
     return (
         <div className={`${classes.teamContainer} ${classes.customScroll}`}>
             <table className={classes.teamTable}>

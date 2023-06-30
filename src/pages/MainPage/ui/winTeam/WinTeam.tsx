@@ -8,16 +8,11 @@ interface IWinTeam {
     handleInfoClick: (index: number) => void
     selectedPlayer: any
     setSelectedPlayer: Dispatch<any>
+    winningTeam: IPlayer[]
+    setWinningTeam: (player: IPlayer[]) =>void
 }
 
-export const WinTeam: FC<IWinTeam> = memo(({setSelectedPlayer, selectedPlayer}) => {
-    const [winningTeam, setWinningTeam] = useState<IPlayer[]>([]);
-
-    useEffect(() => {
-        setWinningTeam(generateRandomPlayers());
-    }, []);
-
-
+export const WinTeam: FC<IWinTeam> = memo(({setSelectedPlayer, selectedPlayer, setWinningTeam, winningTeam}) => {
 
     return (
         <div className={`${classes.teamContainer} ${classes.customScroll}`}>
