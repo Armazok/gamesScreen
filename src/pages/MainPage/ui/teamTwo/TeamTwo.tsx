@@ -1,5 +1,5 @@
 import {Dispatch, FC, memo} from 'react';
-import classes from "pages/MainPage/ui/MainPage.module.scss";
+import classes from "pages/MainPage/ui/FinalResults.module.scss";
 import Info from "assets/icon/information.svg";
 import {IPlayer} from "utils/generetePlayers";
 import {SelectedPlayer} from "pages/MainPage/ui/selectedPlayer/SelecetedPlayer";
@@ -12,7 +12,7 @@ interface IWinTeam {
     setWinningTeam: (player: IPlayer[]) =>void
 }
 
-export const WinTeam: FC<IWinTeam> = memo(({setSelectedPlayer, selectedPlayer, setWinningTeam, winningTeam}) => {
+export const TeamTwo: FC<IWinTeam> = memo(({setSelectedPlayer, selectedPlayer, setWinningTeam, winningTeam}) => {
 
     return (
         <div className={`${classes.teamContainer} ${classes.customScroll}`}>

@@ -1,11 +1,11 @@
-import classes from './MainPage.module.scss';
+import classes from './FinalResults.module.scss';
 import Win from '../../../assets/icon/win.svg';
-import {WinTeam} from "pages/MainPage/ui/winTeam/WinTeam";
-import {LoseTeam} from "pages/MainPage/ui/loseTeam/LoseTeam";
+import {TeamTwo} from "pages/MainPage/ui/teamTwo/TeamTwo";
+import {TeamOne} from "pages/MainPage/ui/teamOne/TeamOne";
 import {useEffect, useState} from "react";
 import {generateRandomPlayers, IPlayer} from "utils/generetePlayers";
 
-const MainPage = () => {
+const FinalResults = () => {
 
     const [showSelectedPlayer, setShowSelectedPlayer] = useState(null);
     const [losingTeam, setLosingTeam] = useState<IPlayer[]>([]);
@@ -38,14 +38,14 @@ const MainPage = () => {
             </div>
 
             <div className={classes.teamsContainer}>
-                <WinTeam
+                <TeamTwo
                     winningTeam={winningTeam}
                     setWinningTeam={setWinningTeam}
                     selectedPlayer={showSelectedPlayer}
                     setSelectedPlayer={setShowSelectedPlayer}
                     handleInfoClick={handleInfoClick}
                 />
-                <LoseTeam
+                <TeamOne
                     losingTeam={losingTeam}
                     setLosingTeam={setLosingTeam}
                     selectedPlayer={showSelectedPlayer}
@@ -57,4 +57,4 @@ const MainPage = () => {
     );
 };
 
-export default MainPage;
+export default FinalResults;

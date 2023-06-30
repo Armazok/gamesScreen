@@ -1,10 +1,10 @@
 import './styles/index.scss';
-import MainPage from "pages/MainPage/ui/MainPage";
+import FinalResults from "pages/MainPage/ui/FinalResults";
 
 const App = () => {
     return (
         <div className={"app"}>
-            <MainPage/>
+            <FinalResults/>
         </div>
     );
 };

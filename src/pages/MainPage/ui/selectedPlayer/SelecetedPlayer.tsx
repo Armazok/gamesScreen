@@ -1,5 +1,5 @@
 import {FC, memo} from 'react';
-import classes from "pages/MainPage/ui/MainPage.module.scss";
+import classes from "pages/MainPage/ui/FinalResults.module.scss";
 import {IPlayer} from "utils/generetePlayers";
 
 interface ISelectedPlayer {
