@@ -1,7 +1,7 @@
-import {Dispatch, FC, memo, useEffect, useState} from 'react';
+import {Dispatch, FC, memo} from 'react';
 import classes from "pages/MainPage/ui/MainPage.module.scss";
 import Info from "assets/icon/information.svg";
-import {generateRandomPlayers, IPlayer} from "utils/generetePlayers";
+import {IPlayer} from "utils/generetePlayers";
 import {SelectedPlayer} from "pages/MainPage/ui/selectedPlayer/SelecetedPlayer";
 
 interface IWinTeam {
@@ -33,7 +33,7 @@ export const WinTeam: FC<IWinTeam> = memo(({setSelectedPlayer, selectedPlayer, s
                             <td>{player.score}</td>
                             <td>
                                 <div>
-                                    <button onClick={() => setSelectedPlayer(player.id)}>
+                                    <button className={classes.buttonInfo} onClick={() => setSelectedPlayer(player.id)}>
                                         <Info/>
                                     </button>
                                     {selectedPlayer === player.id && (

@@ -32,7 +32,7 @@ export const LoseTeam: FC<ILoseTeam> = memo(({setSelectedPlayer, selectedPlayer,
                             <td>{player.score}</td>
                             <td>
                                 <div>
-                                    <button onClick={() => setSelectedPlayer(player.id)}>
+                                    <button className={classes.buttonInfo} onClick={() => setSelectedPlayer(player.id)}>
                                         <Info/>
                                     </button>
                                     {selectedPlayer === player.id && (
