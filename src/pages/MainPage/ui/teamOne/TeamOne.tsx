@@ -8,11 +8,11 @@ interface ILoseTeam {
     handleInfoClick: (index: number) => void
     selectedPlayer: any
     setSelectedPlayer: Dispatch<any>
-    losingTeam: IPlayer[]
-    setLosingTeam: (player: IPlayer[]) => void
+    teamOne: IPlayer[]
+    setTeamOne: (player: IPlayer[]) => void
 }
 
-export const TeamOne: FC<ILoseTeam> = memo(({setSelectedPlayer, selectedPlayer, losingTeam, setLosingTeam}) => {
+export const TeamOne: FC<ILoseTeam> = memo(({setSelectedPlayer, selectedPlayer, teamOne}) => {
     return (
         <div className={`${classes.teamContainer} ${classes.customScroll}`}>
             <table className={classes.teamTable}>
@@ -24,7 +24,7 @@ export const TeamOne: FC<ILoseTeam> = memo(({setSelectedPlayer, selectedPlayer, 
                 </tr>
                 </thead>
                 <tbody>
-                {losingTeam
+                {teamOne
                     .sort((a, b) => b.score - a.score)
                     .map((player) => (
                         <tr key={player.id}>

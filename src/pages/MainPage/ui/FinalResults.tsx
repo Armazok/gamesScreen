@@ -8,8 +8,8 @@ import {generateRandomPlayers, IPlayer} from "utils/generetePlayers";
 const FinalResults = () => {
 
     const [showSelectedPlayer, setShowSelectedPlayer] = useState(null);
-    const [losingTeam, setLosingTeam] = useState<IPlayer[]>([]);
-    const [winningTeam, setWinningTeam] = useState<IPlayer[]>([]);
+    const [teamOne, setTeamOne] = useState<IPlayer[]>([]);
+    const [teamTwo, setTeamTwo] = useState<IPlayer[]>([]);
 
     const handleInfoClick = (idPlayer: number) => {
         if (showSelectedPlayer === idPlayer) {
@@ -21,8 +21,8 @@ const FinalResults = () => {
 
 
     useEffect(() => {
-        setLosingTeam(generateRandomPlayers());
-        setWinningTeam(generateRandomPlayers());
+        setTeamOne(generateRandomPlayers());
+        setTeamTwo(generateRandomPlayers());
     }, []);
 
 
@@ -39,15 +39,15 @@ const FinalResults = () => {
 
             <div className={classes.teamsContainer}>
                 <TeamTwo
-                    winningTeam={winningTeam}
-                    setWinningTeam={setWinningTeam}
+                    teamTwo={teamTwo}
+                    setTeamTwo={setTeamTwo}
                     selectedPlayer={showSelectedPlayer}
                     setSelectedPlayer={setShowSelectedPlayer}
                     handleInfoClick={handleInfoClick}
                 />
                 <TeamOne
-                    losingTeam={losingTeam}
-                    setLosingTeam={setLosingTeam}
+                    teamOne={teamOne}
+                    setTeamOne={setTeamOne}
                     selectedPlayer={showSelectedPlayer}
                     setSelectedPlayer={setShowSelectedPlayer}
                     handleInfoClick={handleInfoClick}
